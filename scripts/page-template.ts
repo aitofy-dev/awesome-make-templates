@@ -24,9 +24,14 @@ function intro(t: Template): string {
 
 function screenshot(t: Template): string {
   if (!t.screenshotPath || !t.meta.screenshot) return '';
+  const img = `<img src="/${t.meta.slug}/${esc(t.meta.screenshot)}" alt="${esc(t.meta.h1)}" width="1200" height="630" loading="lazy">`;
+  const linked = t.meta.shareUrl ? `<a href="${esc(t.meta.shareUrl)}">${img}</a>` : img;
+  const caption = t.meta.shareUrl
+    ? 'The scenario on the Make canvas, left to right. Click it to open the scenario in Make.'
+    : 'The scenario on the Make canvas, left to right.';
   return `<figure class="shot">
-          <img src="/${t.meta.slug}/${esc(t.meta.screenshot)}" alt="${esc(t.meta.h1)}" width="1200" height="630" loading="lazy">
-          <figcaption>The scenario on the Make canvas, left to right.</figcaption>
+          ${linked}
+          <figcaption>${caption}</figcaption>
         </figure>`;
 }
 

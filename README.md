@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/aitofy-dev/awesome-make-templates/actions/workflows/ci.yml/badge.svg)](https://github.com/aitofy-dev/awesome-make-templates/actions/workflows/ci.yml)
 
-![Three Make.com scenarios: Google Forms to Notion, Google Sheets to an AI draft, Google Sheets to a Slack digest](docs/social-card.png)
+[![Three Make.com scenarios: Google Forms to Notion, Google Sheets to an AI draft, Google Sheets to a Slack digest](docs/social-card.png)](https://make-templates.aitofy.dev)
 
 The open-source Make.com template library: importable scenario blueprints, not 40-step tutorials.
 Each folder is one working automation — download the blueprint, import it, connect your accounts, run it.

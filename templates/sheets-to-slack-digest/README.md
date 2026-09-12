@@ -2,7 +2,7 @@
 
 Rows land in a spreadsheet. Make collects the new ones, folds them into a single message, and posts that message to a Slack channel. One message per batch, not one per row. No code.
 
-![Post new Google Sheets rows to Slack as one digest](canvas.png)
+[![Post new Google Sheets rows to Slack as one digest](canvas.png)](https://us2.make.com/public/shared-scenario/cIr0IMnHhoH/sheets-rows-slack-digest)
 
 ## Before you start
 

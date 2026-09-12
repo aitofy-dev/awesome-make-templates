@@ -2,7 +2,7 @@
 
 Someone fills in your Google Form. The answer is saved to a spreadsheet, added to your Notion database, and emailed to you. No code.
 
-![Send Google Forms responses to Notion and email](canvas.png)
+[![Send Google Forms responses to Notion and email](canvas.png)](https://us2.make.com/public/shared-scenario/BYOdssUC41U/form-notion-email)
 
 ## Before you start
 

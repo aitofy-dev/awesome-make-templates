@@ -2,7 +2,7 @@
 
 You type a product name and a few details into a spreadsheet row. OpenAI writes the product description, and it lands back in the same row a moment later. No code.
 
-![Turn new Google Sheets rows into AI-written drafts with OpenAI](canvas.png)
+[![Turn new Google Sheets rows into AI-written drafts with OpenAI](canvas.png)](https://us2.make.com/public/shared-scenario/EfWP9JKmFPU/sheets-row-ai-draft)
 
 ## Before you start
 
