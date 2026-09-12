@@ -1,5 +1,9 @@
 export const ORIGIN = 'https://make-templates.aitofy.dev';
-export const REPO_URL = 'https://github.com/aitofy-dev/awesome-make-templates';
+
+const REPO_SLUG = 'aitofy-dev/awesome-make-templates';
+export const REPO_URL = `https://github.com/${REPO_SLUG}`;
+/** Raw file base, so an LLM reading the repo can download the JSON itself. */
+export const RAW_BASE = `https://raw.githubusercontent.com/${REPO_SLUG}/main`;
 
 export interface PageSpec {
   readonly path: string;

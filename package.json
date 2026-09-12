@@ -9,6 +9,7 @@
   "scripts": {
     "gen": "node --disable-warning=ExperimentalWarning --experimental-strip-types scripts/gen.ts",
     "build:site": "node --run gen",
+    "docs:llms": "node --run gen",
     "test": "node --disable-warning=ExperimentalWarning --experimental-strip-types --test scripts/*.test.ts",
     "import-check": "node --disable-warning=ExperimentalWarning --experimental-strip-types scripts/import-check.ts",
     "ship": "node --run build:site && pnpm dlx wrangler deploy"

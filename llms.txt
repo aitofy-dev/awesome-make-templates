@@ -7,6 +7,7 @@
 - [README](./README.md): what this is, and how to import a blueprint in four steps.
 - [Contributing](./CONTRIBUTING.md): folder layout and the rules a template must satisfy.
 - [Changelog](./CHANGELOG.md): user-facing changes per release.
+- [llms-full.txt](./llms-full.txt): the README and every template README in one file.
 
 ## Templates
 
@@ -15,3 +16,11 @@
 - [Turn new Google Sheets rows into AI-written drafts with OpenAI](./templates/sheets-openai-draft/README.md): Google Sheets and OpenAI. 2 connections, 3 operations per run, no AI credits. Status: published.
 - [Post new Google Sheets rows to Slack as one digest](./templates/sheets-to-slack-digest/README.md): Google Sheets and Slack. 2 connections, 21 operations per run, no AI credits. Status: published.
 <!-- /gen:llms -->
+
+## Files in this repository (raw, downloadable)
+
+<!-- gen:raw -->
+- [Send Google Forms responses to Notion and email](https://raw.githubusercontent.com/aitofy-dev/awesome-make-templates/main/templates/google-forms-to-notion/blueprint.json): the blueprint JSON, importable as downloaded. 4 connections, 4 operations per run. Also raw: [README.md](https://raw.githubusercontent.com/aitofy-dev/awesome-make-templates/main/templates/google-forms-to-notion/README.md), [meta.json](https://raw.githubusercontent.com/aitofy-dev/awesome-make-templates/main/templates/google-forms-to-notion/meta.json).
+- [Turn new Google Sheets rows into AI-written drafts with OpenAI](https://raw.githubusercontent.com/aitofy-dev/awesome-make-templates/main/templates/sheets-openai-draft/blueprint.json): the blueprint JSON, importable as downloaded. 2 connections, 3 operations per run. Also raw: [README.md](https://raw.githubusercontent.com/aitofy-dev/awesome-make-templates/main/templates/sheets-openai-draft/README.md), [meta.json](https://raw.githubusercontent.com/aitofy-dev/awesome-make-templates/main/templates/sheets-openai-draft/meta.json).
+- [Post new Google Sheets rows to Slack as one digest](https://raw.githubusercontent.com/aitofy-dev/awesome-make-templates/main/templates/sheets-to-slack-digest/blueprint.json): the blueprint JSON, importable as downloaded. 2 connections, 21 operations per run. Also raw: [README.md](https://raw.githubusercontent.com/aitofy-dev/awesome-make-templates/main/templates/sheets-to-slack-digest/README.md), [meta.json](https://raw.githubusercontent.com/aitofy-dev/awesome-make-templates/main/templates/sheets-to-slack-digest/meta.json).
+<!-- /gen:raw -->

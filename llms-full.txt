@@ -1,0 +1,264 @@
+# awesome-make-templates — full documentation
+
+> Every user-facing document in this repository, concatenated for LLM context: the root README, then one README per template. Engineering notes under docs/ are not included.
+
+Repository: https://github.com/aitofy-dev/awesome-make-templates
+Documents: 4
+
+========================================================================
+FILE: README.md
+========================================================================
+
+# awesome-make-templates
+
+[![CI](https://github.com/aitofy-dev/awesome-make-templates/actions/workflows/ci.yml/badge.svg)](https://github.com/aitofy-dev/awesome-make-templates/actions/workflows/ci.yml)
+
+The open-source Make.com template library: importable scenario blueprints, not 40-step tutorials.
+Each folder is one working automation — download the blueprint, import it, connect your accounts, run it.
+Every template ships with a canvas screenshot, a connection checklist, and its real credit cost per run.
+No account needed to browse. No email gate. No paid tier.
+
+Same templates as web pages: [make-templates.aitofy.dev](https://make-templates.aitofy.dev). For agents and LLMs: [llms.txt](./llms.txt), [llms-full.txt](./llms-full.txt).
+
+**[Create a Make account](https://www.make.com/en/register?pc=aitofy&affiliateSource=github)** — referral link: Make pays us, you pay the same price.
+
+## How do I import a Make.com blueprint?
+
+1. **Create a Make account** using the referral link above. It is a referral link — it costs you nothing and funds this library. Already have an account? Skip to step 2.
+2. **Import the blueprint.** Open a template folder, download `blueprint.json`, then in Make: *Create a new scenario → ⋯ menu → Import Blueprint*. Where a template lists a scenario link, *Use this scenario* does the same in one click.
+3. **Reconnect your accounts.** Imported modules show up red. That is normal and expected — a blueprint carries no credentials. Open each red module and pick or create its connection. The template README lists exactly which connections you need.
+4. **Run once.** Hit *Run once*, check the output, then turn the schedule on.
+
+## What Make.com templates are available?
+
+<!-- gen:templates -->
+3 importable blueprints across Gmail, Google Forms, Google Sheets, Notion, OpenAI and Slack. None of them spend Make AI credits. Every row links the blueprint JSON, the one-click scenario where there is one, and a page listing the connections to reconnect after import.
+
+| Template | Apps | Operations / run | Department | Get it |
+|---|---|---|---|---|
+| [Send Google Forms responses to Notion and email](./templates/google-forms-to-notion/) | Google Forms, Google Sheets, Notion, Gmail | 4 | Operations | [Use in Make](https://us2.make.com/public/shared-scenario/BYOdssUC41U/form-notion-email) · [blueprint.json](./templates/google-forms-to-notion/blueprint.json) · [page](https://make-templates.aitofy.dev/google-forms-to-notion) |
+| [Turn new Google Sheets rows into AI-written drafts with OpenAI](./templates/sheets-openai-draft/) | Google Sheets, OpenAI | 3 | Marketing | [Use in Make](https://us2.make.com/public/shared-scenario/EfWP9JKmFPU/sheets-row-ai-draft) · [blueprint.json](./templates/sheets-openai-draft/blueprint.json) · [page](https://make-templates.aitofy.dev/sheets-openai-draft) |
+| [Post new Google Sheets rows to Slack as one digest](./templates/sheets-to-slack-digest/) | Google Sheets, Slack | 21 | Operations | [Use in Make](https://us2.make.com/public/shared-scenario/cIr0IMnHhoH/sheets-rows-slack-digest) · [blueprint.json](./templates/sheets-to-slack-digest/blueprint.json) · [page](https://make-templates.aitofy.dev/sheets-to-slack-digest) |
+<!-- /gen:templates -->
+
+*Affiliate disclosure: links to Make.com in this repository are referral links; we may earn a commission if you sign up, at no extra cost to you.*
+
+## How much does each scenario cost to run?
+
+Make bills **operations**: one per module, per bundle that module handles — the trigger included. That is why a check picking up ten new rows costs more than a check picking up one, and why the same automation can cost a different amount on Monday than on Tuesday.
+
+The *Operations / run* column above is the worked example each template documents. Its README carries the formula behind that number, the worst case at the trigger's default *Limit*, and where the count came from.
+
+AI credits are a second, separate meter. A template that calls OpenAI with your own API key spends no Make AI credits — OpenAI bills you for the tokens instead.
+
+## FAQ
+
+<!-- gen:faq -->
+### Does this work on the free plan?
+
+Yes. Four standard modules, no premium apps, no AI credits. The free plan checks for new responses every 15 minutes. ([Send Google Forms responses to Notion and email](./templates/google-forms-to-notion/))
+
+### Why are the modules red after import?
+
+Accounts never travel inside a blueprint. Open each red module, pick or create the account, and the red disappears. ([Send Google Forms responses to Notion and email](./templates/google-forms-to-notion/))
+
+### Can I skip Google Sheets?
+
+Yes. Delete step 2 and drag step 3 onto the trigger. The spreadsheet is there as a permanent backup of every response. ([Send Google Forms responses to Notion and email](./templates/google-forms-to-notion/))
+
+### Will it rewrite rows that already have a draft?
+
+No. The trigger only picks up rows added after the last check, so an existing row is never touched twice. ([Turn new Google Sheets rows into AI-written drafts with OpenAI](./templates/sheets-openai-draft/))
+
+### Can I use it for something other than product descriptions?
+
+Yes. The prompt is one text box in step 2. Replace the instruction and the column headings and the same three steps write any kind of draft back to the row. ([Turn new Google Sheets rows into AI-written drafts with OpenAI](./templates/sheets-openai-draft/))
+
+### Can I get one Slack message per row instead of a digest?
+
+Yes. Delete step 2 and drag step 3 onto the trigger. Every new row then posts its own message, and a cycle of 10 rows costs 20 operations instead of 21. ([Post new Google Sheets rows to Slack as one digest](./templates/sheets-to-slack-digest/))
+
+### How many rows fit in one digest?
+
+Up to the Limit set on the trigger, which ships at 25. Rows above that wait for the next cycle. ([Post new Google Sheets rows to Slack as one digest](./templates/sheets-to-slack-digest/))
+<!-- /gen:faq -->
+
+## How do I add a template?
+
+New templates and fixes are welcome — one folder per use case. See [CONTRIBUTING.md](./CONTRIBUTING.md) for the 2-minute version.
+
+## Get started
+
+Ready to run one of these? **[Create a Make account](https://www.make.com/en/register?pc=aitofy&affiliateSource=github)** (referral link), then import a blueprint with the four steps above.
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
+
+========================================================================
+FILE: templates/google-forms-to-notion/README.md
+========================================================================
+
+# Send Google Forms responses to Notion and email
+
+Someone fills in your Google Form. The answer is saved to a spreadsheet, added to your Notion database, and emailed to you. No code.
+
+## Before you start
+
+You need three accounts: **Google** (the form and the spreadsheet), **Notion**, and a **Gmail** address to send from. Setup takes about 10 minutes and you never leave the Make screen after importing. Nothing here needs coding — you click, pick, and type.
+
+## What it does
+
+| Step | App | What happens |
+|---|---|---|
+| 1 | Google Forms | Checks your form for new answers (`watchResponses`) |
+| 2 | Google Sheets | Adds a row: submitted at, respondent, response ID (`addRow`) |
+| 3 | Notion | Creates one item in your database (`createDataSourceItem`) |
+| 4 | Gmail | Emails you that a response arrived (`ActionSendEmail`) |
+
+## Prepare your Notion database
+
+Do this **before** you open step 3. Create a database in Notion with exactly these three properties, then click *…* → *Connections* on that database and add your Make integration, otherwise Make cannot see it. Get the names and types right and step 3 becomes three dropdown picks.
+
+| Property name | Type | Maps from |
+|---|---|---|
+| `Name` | Title | `{{1.responseId}}` |
+| `Submitted at` | Date | `{{1.createTime}}` |
+| `Respondent` | Email | `{{1.respondentEmail}}` |
+
+## Accounts to connect (4)
+
+- [ ] Google Forms  - [ ] Google Sheets  - [ ] Notion  - [ ] Gmail
+
+**Red modules after import = not yet connected, not broken.** Accounts, file choices and Notion property links belong to you, so they are never stored inside a shared blueprint. Open each red module and pick an account.
+
+## Operations per run
+
+**4 operations per form response** — one for each step. No AI modules, so this costs you no AI credits. Make checks the form on a schedule; if two responses arrive between checks, that cycle costs 8.
+
+## Import → Reconnect → Run once
+
+1. **Import** — in Make go to **Scenarios** → **Create a new scenario** → click the **⋯** button at the bottom of the screen → **Import Blueprint** → upload `blueprint.json`.
+2. **Reconnect** — step 1: sign in to Google, then choose your form. Step 2: choose the spreadsheet and sheet, check the three columns line up. Step 3: sign in to Notion, use the **ID Finder** to pick the database you prepared above, then match each property to the column beside it. Step 4: type the address that should get the alert.
+3. **Run once** — submit a test answer to your form, press **Run once**, and check that the row, the Notion item and the email all appeared.
+
+========================================================================
+FILE: templates/sheets-openai-draft/README.md
+========================================================================
+
+# Turn new Google Sheets rows into AI-written drafts with OpenAI
+
+You type a product name and a few details into a spreadsheet row. OpenAI writes the product description, and it lands back in the same row a moment later. No code.
+
+## Before you start
+
+You need two accounts: **Google** (the spreadsheet) and **OpenAI** (an API key from platform.openai.com, with a little billing credit on it — the free ChatGPT login is not enough). Setup takes about 10 minutes and you never leave the Make screen after importing. Nothing here needs coding — you click, pick, and type.
+
+## What it does
+
+| Step | App | What happens |
+|---|---|---|
+| 1 | Google Sheets | Checks your sheet for rows you added since the last look (`watchRows`) |
+| 2 | OpenAI | Writes the draft from the product name and details (`CreateCompletion`) |
+| 3 | Google Sheets | Writes the draft back into that same row (`updateRow`) |
+
+## Prepare your Google Sheet
+
+Do this **before** you import. Create a spreadsheet with these four headings in row 1, in this order, then add your products from row 2 down. Step 3 writes into columns C and D by position, so the order matters more than the wording.
+
+| Column | What goes in it | Filled by |
+|---|---|---|
+| A — `Product name` | The name of the product, e.g. *Cedar camping stool* | You |
+| B — `Key details` | Anything the description should mention: material, size, price, who it is for | You |
+| C — `Draft` | The description OpenAI wrote | The scenario |
+| D — `Status` | Reads `Draft ready` once the row is done | The scenario |
+
+Leave C and D empty. Fill A and B, and the row goes out on the next check.
+
+## Accounts to connect (2)
+
+- [ ] Google Sheets (steps 1 and 3)  - [ ] OpenAI (step 2)
+
+**Red modules after import = not yet connected, not broken.** Accounts and file choices belong to you, so they are never stored inside a shared blueprint. Open each red module and pick an account.
+
+## Operations per run
+
+**3 operations per row** — one for each step. Step 1 ships with *Limit 1*, so one check costs 3 operations; set it to 5 and a check costs 15.
+
+**0 Make AI credits.** Step 2 bills its tokens to your own OpenAI key, so it consumes none of the AI credits included in your Make plan. Your OpenAI bill for one draft is a few hundred tokens.
+
+## Import → Reconnect → Run once
+
+1. **Import** — in Make go to **Scenarios** → **Create a new scenario** → click the **⋯** button at the bottom of the screen → **Import Blueprint** → upload `blueprint.json`.
+2. **Reconnect** — step 1: sign in to Google, then pick your spreadsheet and sheet from the dropdowns. Step 2: paste your OpenAI API key, then choose a model from the **Model** dropdown (a *mini* or *nano* model is the cheapest and plenty for this). Step 3: sign in to Google again (same account is fine) — everything else in step 3 is already filled in, because the spreadsheet, sheet and row number come straight from step 1.
+3. **Run once** — type a product into row 2, press **Run once**, and check that the description lands in column C and `Draft ready` in column D.
+
+If the prompt box in step 2 looks empty before you pick a model, pick the model first — the box appears once a model is chosen. The prompt that ships with this template is:
+
+> You are a product copywriter. Write a product description of about 90 words for an online shop. Product name: *column A*. Key details: *column B*. Rules: plain sentences, no bullet points, no headings, no markdown, no emoji. Start with the benefit to the buyer. Use only the details above and invent nothing. Return the description text only.
+
+========================================================================
+FILE: templates/sheets-to-slack-digest/README.md
+========================================================================
+
+# Post new Google Sheets rows to Slack as one digest
+
+Rows land in a spreadsheet. Make collects the new ones, folds them into a single message, and posts that message to a Slack channel. One message per batch, not one per row. No code.
+
+## Before you start
+
+You need two accounts: **Google** (the spreadsheet) and **Slack** (the channel you post to). Setup takes about 5 minutes and you never leave the Make screen after importing. Nothing here needs coding — you click, pick, and type.
+
+## What it does
+
+| Step | App | What happens |
+|---|---|---|
+| 1 | Google Sheets | Checks your sheet for rows added since the last check |
+| 2 | Tools | Turns every new row into one line and joins those lines into one block of text |
+| 3 | Slack | Posts that block as a single message in the channel you choose |
+
+## Prepare your Google Sheet
+
+Do this **before** you open step 1. Row 1 must hold the headers; the rows underneath are what gets posted. Three columns is the shape the template ships with — keep the order, rename the headers to whatever you like.
+
+| Column | What goes in it | Filled by |
+|---|---|---|
+| A | When it happened — a date, a timestamp, anything short | Whatever writes the row: a Google Form, another scenario, or you |
+| B | The headline — the one thing you want to read in Slack | Same |
+| C | The detail — a link, an amount, an owner, a note | Same |
+
+The Slack line comes out as **B** in bold, then **C**, then **A** in brackets. If your sheet has more columns, they are still read; they just do not appear in the message until you add them in step 2.
+
+## Accounts to connect (2)
+
+- [ ] Google Sheets  - [ ] Slack
+
+**Red modules after import = not yet connected, not broken.** Accounts and file choices belong to you, so they are never stored inside a shared blueprint. Open each red module and pick an account.
+
+## Operations per run
+
+Make charges **one operation per module, per row it handles**. This scenario has three modules, and only the third one ever runs once:
+
+| New rows in one check | Operations | Slack messages |
+|---|---|---|
+| 1 | 3 | 1 |
+| 10 | **21** | 1 |
+| 25 (the Limit the trigger ships with) | 51 | 1 |
+
+The formula is `2 × rows + 1`. No AI modules, so this costs you no AI credits.
+
+## Coming from Zapier
+
+| Zap step | Make module | Notes |
+|---|---|---|
+| Trigger — Google Sheets, New Spreadsheet Row | Google Sheets → Watch New Rows | Zapier fires the Zap once per new row. Make hands all the new rows to the next module in one go. |
+| Digest by Zapier — Append Entry and Schedule Digest | Tools → Text aggregator | The nearest Zapier equivalent. In Make it is a built-in step with no schedule of its own: the batch is whatever the check picked up. |
+| Action — Slack, Send Channel Message | Slack → Send a Message | One message for the whole batch instead of one per row. |
+
+**A Zapier task is not a Make operation.** Zapier counts one task per *action*; the trigger itself is free. Make counts one operation per *module* per *bundle* — the trigger included. Ten new rows in one check costs **21 operations and one Slack message** here. The same thing as a plain Zap costs **10 tasks and ten Slack messages**, because each row runs the Zap again. The units measure different things, so before you conclude anything, look up what your plan charges for 1,000 tasks and what a Make plan charges for 1,000 operations, and compare those two numbers.
+
+## Import → Reconnect → Run once
+
+1. **Import** — in Make go to **Scenarios** → **Create a new scenario** → click the **⋯** button at the bottom of the screen → **Import Blueprint** → upload `blueprint.json`.
+2. **Reconnect** — step 1: sign in to Google, then pick your spreadsheet and sheet from the dropdowns and check that *Table contains headers* is **Yes**. Step 3: sign in to Slack, then pick the channel from the dropdown. Invite your Make Slack app to that channel first, otherwise it will not be in the list.
+3. **Run once** — add a test row to the sheet, press **Run once**, and check that the message lands in the channel. If nothing arrives, the sheet probably had no rows newer than the last check — add one and try again.

@@ -34,6 +34,16 @@ export function extractTable(markdown: string, heading: string): MarkdownTable |
   return { headers: splitRow(scope[head]), rows };
 }
 
+/** Drop a `## <heading>` section and its body, up to the next `## ` heading. */
+export function dropSection(markdown: string, heading: string): string {
+  const lines = markdown.split('\n');
+  const start = lines.findIndex((line) => line.trim() === `## ${heading}`);
+  if (start < 0) return markdown;
+  const offset = lines.slice(start + 1).findIndex((line) => line.startsWith('## '));
+  const end = offset < 0 ? lines.length : start + 1 + offset;
+  return `${[...lines.slice(0, start), ...lines.slice(end)].join('\n').trimEnd()}\n`;
+}
+
 /** Inline markdown a table cell may carry: bold, code, links are not expected. */
 export function inlineToHtml(cell: string): string {
   return esc(cell)

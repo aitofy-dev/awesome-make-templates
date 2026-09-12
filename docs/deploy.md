@@ -14,7 +14,7 @@ CI uses `CLOUDFLARE_API_TOKEN` (Workers Scripts: Edit + Workers Routes: Edit on 
 ## Every release
 
 ```sh
-node --run build:site               # regenerates dist/, README table and llms.txt
+node --run build:site               # regenerates dist/, the README table and FAQ, llms.txt, llms-full.txt
 pnpm dlx wrangler deploy --dry-run   # optional: validates config without uploading
 node --run ship                   # builds, then uploads dist/ to the Worker
 ```

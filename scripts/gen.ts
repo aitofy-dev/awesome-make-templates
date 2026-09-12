@@ -2,7 +2,17 @@ import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSyn
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { canonical, ORIGIN, renderPage, type PageSpec } from './html.ts';
-import { llmsList, readmeTable, replaceMarked, siteLlmsTxt } from './markers.ts';
+import { dropSection } from './markdown.ts';
+import {
+  llmsFullTxt,
+  llmsList,
+  readmeFaq,
+  readmeTable,
+  replaceMarked,
+  repoRawList,
+  siteLlmsTxt,
+  type LlmsDoc,
+} from './markers.ts';
 import { loadTemplates, type Template } from './meta.ts';
 import { homePage } from './page-home.ts';
 import { hasZapierSection, importPage, notFoundPage, zapierPage } from './page-static.ts';
@@ -59,6 +69,16 @@ Sitemap: ${ORIGIN}/sitemap.xml
 `;
 }
 
+/** The root README plus every template README, minus the TODO notes meant for maintainers. */
+function userDocs(templates: readonly Template[]): LlmsDoc[] {
+  const readme = { path: 'README.md', body: readFileSync(join(root, 'README.md'), 'utf8') };
+  const perTemplate = templates.map((t) => ({
+    path: `templates/${t.meta.slug}/README.md`,
+    body: dropSection(readFileSync(join(t.dir, 'README.md'), 'utf8'), 'TODO'),
+  }));
+  return [readme, ...perTemplate];
+}
+
 function updateMarkedFile(file: string, name: string, content: string): void {
   const path = join(root, file);
   const updated = replaceMarked(readFileSync(path, 'utf8'), name, content);
@@ -85,7 +105,10 @@ function main(): void {
   write('llms.txt', siteLlmsTxt(templates));
 
   updateMarkedFile('README.md', 'templates', readmeTable(templates));
+  updateMarkedFile('README.md', 'faq', readmeFaq(templates));
   updateMarkedFile('llms.txt', 'llms', llmsList(templates));
+  updateMarkedFile('llms.txt', 'raw', repoRawList(templates));
+  writeFileSync(join(root, 'llms-full.txt'), llmsFullTxt(userDocs(templates)));
 
   const published = templates.filter((t) => t.meta.status === 'published').length;
   console.log(`${templates.length} templates (${published} published) → ${paths.length} pages in dist/`);
