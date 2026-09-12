@@ -14,12 +14,12 @@ CI uses `CLOUDFLARE_API_TOKEN` (Workers Scripts: Edit + Workers Routes: Edit on 
 ## Every release
 
 ```sh
-pnpm build:site               # regenerates dist/, README table and llms.txt
+node --run build:site               # regenerates dist/, README table and llms.txt
 pnpm dlx wrangler deploy --dry-run   # optional: validates config without uploading
-pnpm deploy                   # builds, then uploads dist/ to the Worker
+node --run ship                   # builds, then uploads dist/ to the Worker
 ```
 
-The first `pnpm deploy` creates the Worker plus the DNS record and certificate for
+The first `node --run ship` creates the Worker plus the DNS record and certificate for
 `make-templates.aitofy.dev` — that is what the `routes` block does. Issuance takes a few minutes,
 and the hostname returns a TLS error until it finishes.
 
