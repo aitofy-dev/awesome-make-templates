@@ -1,0 +1,14 @@
+# awesome-make-templates
+
+> Open-source library of importable Make.com scenario blueprints: one folder per use case, each with a connection checklist, a canvas screenshot, and its credit cost per run.
+
+## Docs
+
+- [README](./README.md): what this is, and how to import a blueprint in four steps.
+- [Contributing](./CONTRIBUTING.md): folder layout and the rules a template must satisfy.
+- [Changelog](./CHANGELOG.md): user-facing changes per release.
+
+## Templates
+
+<!-- gen:llms -->
+<!-- /gen:llms -->
