@@ -1,0 +1,40 @@
+{
+  "slug": "google-forms-to-notion",
+  "title": "Form → Notion + email",
+  "h1": "Send Google Forms responses to Notion and email",
+  "query": "make.com google forms to notion",
+  "apps": [
+    "google-forms",
+    "google-sheets",
+    "notion",
+    "gmail"
+  ],
+  "connections": 4,
+  "opsPerRun": 4,
+  "aiCreditsPerRun": null,
+  "opsNote": "4 operations per form response: 1 Google Forms trigger bundle + 1 Google Sheets Add a Row + 1 Notion Create a Data Source Item + 1 Gmail Send an Email. No AI module, so no credits are consumed — all four apps report centicreditsFormula: null and premium: false in the Make app catalog. The trigger Limit is 2, so a cycle that picks up 2 responses costs 8 operations. Counted from the module list, not yet measured on a paid run.",
+  "shareUrl": "https://us2.make.com/public/shared-scenario/BYOdssUC41U/form-notion-email",
+  "screenshot": "canvas.png",
+  "faq": [
+    {
+      "q": "Does this work on the free plan?",
+      "a": "Yes. Four standard modules, no premium apps, no AI credits. The free plan checks for new responses every 15 minutes."
+    },
+    {
+      "q": "Why are the modules red after import?",
+      "a": "Accounts never travel inside a blueprint. Open each red module, pick or create the account, and the red disappears."
+    },
+    {
+      "q": "Can I skip Google Sheets?",
+      "a": "Yes. Delete step 2 and drag step 3 onto the trigger. The spreadsheet is there as a permanent backup of every response."
+    }
+  ],
+  "related": [
+    "sheets-openai-draft",
+    "sheets-to-slack-digest"
+  ],
+  "department": "Operations",
+  "demandSource": "reddit:r/Make",
+  "status": "published",
+  "scenarioId": 6248767
+}

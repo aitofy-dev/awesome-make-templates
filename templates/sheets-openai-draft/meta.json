@@ -1,0 +1,42 @@
+{
+  "slug": "sheets-openai-draft",
+  "title": "Sheets row → AI draft",
+  "h1": "Turn new Google Sheets rows into AI-written drafts with OpenAI",
+  "query": "make.com google sheets openai",
+  "apps": [
+    "google-sheets",
+    "openai-gpt-3"
+  ],
+  "connections": 2,
+  "opsPerRun": 3,
+  "aiCreditsPerRun": 0,
+  "opsNote": "3 operations per row: 1 Google Sheets Watch New Rows bundle + 1 OpenAI Generate a completion + 1 Google Sheets Update a Row. The trigger Limit ships at 1, so one scheduled check costs 3 operations; Limit 5 costs 15. Make AI credits: 0. Credits are charged only by modules that carry a centicreditsFormula in the app catalog, and of the 47 modules in the openai-gpt-3 app only 'Simple text prompt' (askAnything) has one — 'Generate a completion' has none, because it bills tokens to your own OpenAI API key instead. For reference, the credit unit is the centicredit and 100 centicredits = 1 credit: 'Simple text prompt' costs 100 + round((prompt_tokens * rate_in + completion_tokens * rate_out) / 1130 * 1.25 * 100) centicredits, where GPT-5 nano rates are 0.05 and 0.4, so a 400-token prompt with a 300-token answer costs 100 + round(140 / 1130 * 1.25 * 100) = 115 centicredits = 1.15 credits. Counted from the module list and the app catalog, not yet measured on a paid run.",
+  "shareUrl": "https://us2.make.com/public/shared-scenario/EfWP9JKmFPU/sheets-row-ai-draft",
+  "screenshot": "canvas.png",
+  "faq": [
+    {
+      "q": "Does this work on the free plan?",
+      "a": "Yes. Two standard apps, no premium apps, and zero Make AI credits. You do need your own OpenAI API key, which OpenAI bills separately. The free plan checks the sheet every 15 minutes."
+    },
+    {
+      "q": "Why are the modules red after import?",
+      "a": "Accounts never travel inside a blueprint. Open each red module, pick or create the account, and the red disappears."
+    },
+    {
+      "q": "Will it rewrite rows that already have a draft?",
+      "a": "No. The trigger only picks up rows added after the last check, so an existing row is never touched twice."
+    },
+    {
+      "q": "Can I use it for something other than product descriptions?",
+      "a": "Yes. The prompt is one text box in step 2. Replace the instruction and the column headings and the same three steps write any kind of draft back to the row."
+    }
+  ],
+  "related": [
+    "google-forms-to-notion",
+    "sheets-to-slack-digest"
+  ],
+  "department": "Marketing",
+  "demandSource": "corpus:n8n-workflows:google-sheets=1534,openai-gpt=711",
+  "status": "published",
+  "scenarioId": 6248768
+}

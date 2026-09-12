@@ -4,7 +4,13 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
-  "scripts": {}
+  "scripts": {
+    "gen": "node --disable-warning=ExperimentalWarning --experimental-strip-types scripts/gen.ts",
+    "build:site": "pnpm gen",
+    "deploy": "pnpm build:site && pnpm dlx wrangler deploy",
+    "test": "node --disable-warning=ExperimentalWarning --experimental-strip-types --test scripts/*.test.ts",
+    "import-check": "node --disable-warning=ExperimentalWarning --experimental-strip-types scripts/import-check.ts"
+  }
 }

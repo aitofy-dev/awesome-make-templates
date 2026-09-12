@@ -5,7 +5,7 @@ Each folder is one working automation — download the blueprint, import it, con
 Every template ships with a canvas screenshot, a connection checklist, and its real credit cost per run.
 No account needed to browse. No email gate. No paid tier.
 
-**[Create a Make account]({{AFF_LINK}})** — referral link: Make pays us, you pay the same price.
+**[Create a Make account](https://www.make.com/en/register?pc=aitofy&affiliateSource=github)** — referral link: Make pays us, you pay the same price.
 
 ## Quick Start
 
@@ -17,6 +17,11 @@ No account needed to browse. No email gate. No paid tier.
 ## Templates
 
 <!-- gen:templates -->
+| Template | Apps | Operations / run | Department | Get it |
+|---|---|---|---|---|
+| [Send Google Forms responses to Notion and email](./templates/google-forms-to-notion/) | Google Forms, Google Sheets, Notion, Gmail | 4 | Operations | [Use in Make](https://us2.make.com/public/shared-scenario/BYOdssUC41U/form-notion-email) · [blueprint.json](./templates/google-forms-to-notion/blueprint.json) · [page](https://make-templates.aitofy.dev/google-forms-to-notion) |
+| [Turn new Google Sheets rows into AI-written drafts with OpenAI](./templates/sheets-openai-draft/) | Google Sheets, OpenAI | 3 | Marketing | [Use in Make](https://us2.make.com/public/shared-scenario/EfWP9JKmFPU/sheets-row-ai-draft) · [blueprint.json](./templates/sheets-openai-draft/blueprint.json) · [page](https://make-templates.aitofy.dev/sheets-openai-draft) |
+| [Post new Google Sheets rows to Slack as one digest](./templates/sheets-to-slack-digest/) | Google Sheets, Slack | 21 | Operations | [Use in Make](https://us2.make.com/public/shared-scenario/cIr0IMnHhoH/sheets-rows-slack-digest) · [blueprint.json](./templates/sheets-to-slack-digest/blueprint.json) · [page](https://make-templates.aitofy.dev/sheets-to-slack-digest) |
 <!-- /gen:templates -->
 
 *Affiliate disclosure: links to Make.com in this repository are referral links; we may earn a commission if you sign up, at no extra cost to you.*
@@ -27,7 +32,7 @@ New templates and fixes are welcome — one folder per use case. See [CONTRIBUTI
 
 ## Get started
 
-Ready to run one of these? **[Create a Make account]({{AFF_LINK}})** (referral link), then follow the Quick Start above.
+Ready to run one of these? **[Create a Make account](https://www.make.com/en/register?pc=aitofy&affiliateSource=github)** (referral link), then follow the Quick Start above.
 
 ## License
 

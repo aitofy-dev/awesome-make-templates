@@ -1,0 +1,118 @@
+{
+	"name": "Google Forms response to Notion and email",
+	"flow": [
+		{
+			"id": 1,
+			"module": "google-forms:watchResponses",
+			"version": 2,
+			"parameters": {
+				"formId": "",
+				"limit": 2
+			},
+			"mapper": {},
+			"metadata": {
+				"designer": {
+					"x": 0,
+					"y": 0,
+					"name": "Watch form responses"
+				},
+				"parameters": [
+					{ "name": "__IMTCONN__", "type": "account:google", "label": "Connection", "required": true },
+					{ "name": "formId", "type": "text", "label": "Form ID", "required": true },
+					{ "name": "limit", "type": "uinteger", "label": "Limit", "required": true }
+				]
+			}
+		},
+		{
+			"id": 2,
+			"module": "google-sheets:addRow",
+			"version": 2,
+			"parameters": {},
+			"mapper": {
+				"mode": "fromAll",
+				"spreadsheetId": "",
+				"sheetId": "",
+				"includesHeaders": true,
+				"values": {
+					"0": "{{1.createTime}}",
+					"1": "{{1.respondentEmail}}",
+					"2": "{{1.responseId}}"
+				},
+				"insertDataOption": "INSERT_ROWS",
+				"valueInputOption": "USER_ENTERED",
+				"insertUnformatted": false
+			},
+			"metadata": {
+				"designer": {
+					"x": 300,
+					"y": 0,
+					"name": "Log response to Sheets"
+				},
+				"parameters": [
+					{ "name": "__IMTCONN__", "type": "account:google", "label": "Connection", "required": true }
+				]
+			}
+		},
+		{
+			"id": 3,
+			"module": "notion:createDataSourceItem",
+			"version": 1,
+			"parameters": {},
+			"mapper": {
+				"select": "list",
+				"data_source": ""
+			},
+			"metadata": {
+				"designer": {
+					"x": 600,
+					"y": 0,
+					"name": "Create Notion item"
+				},
+				"parameters": [
+					{ "name": "__IMTCONN__", "type": "account:notion2,notion3", "label": "Connection", "required": true }
+				]
+			}
+		},
+		{
+			"id": 4,
+			"module": "google-email:ActionSendEmail",
+			"version": 2,
+			"parameters": {},
+			"mapper": {
+				"from": "",
+				"to": [""],
+				"cc": [],
+				"bcc": [],
+				"subject": "New Google Forms response",
+				"html": "A new response arrived.<br><br>Submitted: {{1.createTime}}<br>Respondent: {{1.respondentEmail}}<br>Response ID: {{1.responseId}}",
+				"attachments": []
+			},
+			"metadata": {
+				"designer": {
+					"x": 900,
+					"y": 0,
+					"name": "Send notification email"
+				},
+				"parameters": [
+					{ "name": "account", "type": "account:google-restricted", "label": "Connection", "required": true }
+				]
+			}
+		}
+	],
+	"metadata": {
+		"instant": false,
+		"version": 1,
+		"designer": { "orphans": [] },
+		"scenario": {
+			"roundtrips": 1,
+			"maxErrors": 3,
+			"autoCommit": true,
+			"autoCommitTriggerLast": true,
+			"sequential": false,
+			"confidential": false,
+			"dataloss": false,
+			"dlq": false,
+			"freshVariables": false
+		}
+	}
+}

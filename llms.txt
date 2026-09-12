@@ -11,4 +11,7 @@
 ## Templates
 
 <!-- gen:llms -->
+- [Send Google Forms responses to Notion and email](./templates/google-forms-to-notion/README.md): Google Forms, Google Sheets, Notion and Gmail. 4 connections, 4 operations per run, no AI credits. Status: published.
+- [Turn new Google Sheets rows into AI-written drafts with OpenAI](./templates/sheets-openai-draft/README.md): Google Sheets and OpenAI. 2 connections, 3 operations per run, no AI credits. Status: published.
+- [Post new Google Sheets rows to Slack as one digest](./templates/sheets-to-slack-digest/README.md): Google Sheets and Slack. 2 connections, 21 operations per run, no AI credits. Status: published.
 <!-- /gen:llms -->

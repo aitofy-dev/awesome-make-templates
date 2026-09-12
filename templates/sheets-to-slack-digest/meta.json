@@ -1,0 +1,42 @@
+{
+  "slug": "sheets-to-slack-digest",
+  "title": "Sheets rows → Slack digest",
+  "h1": "Post new Google Sheets rows to Slack as one digest",
+  "query": "make.com google sheets to slack",
+  "apps": [
+    "google-sheets",
+    "slack"
+  ],
+  "connections": 2,
+  "opsPerRun": 21,
+  "aiCreditsPerRun": null,
+  "opsNote": "Make charges one operation per module per bundle, so a cycle that picks up N new rows costs 2N + 1: N for the Google Sheets Watch New Rows trigger, N for the Text aggregator that consumes those N bundles, and 1 for the single Slack Send a Message. opsPerRun 21 is the worked example of N = 10. The trigger Limit ships at 25, so the worst case for one cycle is 51. No AI module: google-sheets, util and slack all report premium: false and centicreditsFormula: null in the Make app catalog, so no credits are consumed. Counted from the module list, not yet measured on a paid run.",
+  "shareUrl": "https://us2.make.com/public/shared-scenario/cIr0IMnHhoH/sheets-rows-slack-digest",
+  "screenshot": "canvas.png",
+  "faq": [
+    {
+      "q": "Does this work on the free plan?",
+      "a": "Yes. Three standard modules, two connections, no premium apps and no AI credits. The free plan checks the sheet every 15 minutes, so you get at most four digests an hour."
+    },
+    {
+      "q": "Why are the modules red after import?",
+      "a": "Accounts never travel inside a blueprint. Open each red module, pick or create the account, and the red disappears."
+    },
+    {
+      "q": "Can I get one Slack message per row instead of a digest?",
+      "a": "Yes. Delete step 2 and drag step 3 onto the trigger. Every new row then posts its own message, and a cycle of 10 rows costs 20 operations instead of 21."
+    },
+    {
+      "q": "How many rows fit in one digest?",
+      "a": "Up to the Limit set on the trigger, which ships at 25. Rows above that wait for the next cycle."
+    }
+  ],
+  "related": [
+    "google-forms-to-notion",
+    "sheets-openai-draft"
+  ],
+  "department": "Operations",
+  "demandSource": "n8n-corpus:google-sheets-1534+slack-761-of-8699",
+  "status": "published",
+  "scenarioId": 6248770
+}

@@ -1,0 +1,91 @@
+{
+	"name": "Google Sheets rows to a Slack digest",
+	"flow": [
+		{
+			"id": 1,
+			"module": "google-sheets:watchRows",
+			"version": 2,
+			"parameters": {
+				"mode": "select",
+				"from": "drive",
+				"spreadsheetId": "",
+				"sheetId": "",
+				"includesHeaders": true,
+				"tableFirstRow": "A1:Z1",
+				"limit": 25,
+				"valueRenderOption": "FORMATTED_VALUE",
+				"dateTimeRenderOption": "FORMATTED_STRING"
+			},
+			"mapper": {},
+			"metadata": {
+				"designer": {
+					"x": 0,
+					"y": 0,
+					"name": "Watch new rows"
+				},
+				"parameters": [
+					{ "name": "__IMTCONN__", "type": "account:google", "label": "Connection", "required": true }
+				]
+			}
+		},
+		{
+			"id": 2,
+			"module": "util:TextAggregator",
+			"version": 1,
+			"parameters": {
+				"feeder": 1,
+				"rowSeparator": "\n"
+			},
+			"mapper": {
+				"value": "• *{{1.`1`}}* — {{1.`2`}} _({{1.`0`}})_"
+			},
+			"metadata": {
+				"designer": {
+					"x": 300,
+					"y": 0,
+					"name": "Build one digest text"
+				}
+			}
+		},
+		{
+			"id": 3,
+			"module": "slack:CreateMessage",
+			"version": 4,
+			"parameters": {},
+			"mapper": {
+				"channelWType": "list",
+				"channelType": "public",
+				"channel": "",
+				"text": "*New rows in your sheet*\n\n{{2.text}}",
+				"mrkdwn": true,
+				"parse": false
+			},
+			"metadata": {
+				"designer": {
+					"x": 600,
+					"y": 0,
+					"name": "Post the digest to Slack"
+				},
+				"parameters": [
+					{ "name": "__IMTCONN__", "type": "account:slack2,slack3", "label": "Connection", "required": true }
+				]
+			}
+		}
+	],
+	"metadata": {
+		"instant": false,
+		"version": 1,
+		"designer": { "orphans": [] },
+		"scenario": {
+			"roundtrips": 1,
+			"maxErrors": 3,
+			"autoCommit": true,
+			"autoCommitTriggerLast": true,
+			"sequential": false,
+			"confidential": false,
+			"dataloss": false,
+			"dlq": false,
+			"freshVariables": false
+		}
+	}
+}

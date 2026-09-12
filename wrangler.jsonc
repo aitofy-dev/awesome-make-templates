@@ -1,0 +1,17 @@
+{
+  // Static assets only: no Worker script, so no "main".
+  "name": "make-templates",
+  "compatibility_date": "2026-09-12",
+  "assets": {
+    "directory": "./dist/",
+    // Canonical URLs have no trailing slash; /slug/ redirects to /slug.
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    {
+      "pattern": "make-templates.aitofy.dev",
+      "custom_domain": true
+    }
+  ]
+}
