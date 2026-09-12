@@ -2,9 +2,11 @@
 
 [![CI](https://github.com/aitofy-dev/awesome-make-templates/actions/workflows/ci.yml/badge.svg)](https://github.com/aitofy-dev/awesome-make-templates/actions/workflows/ci.yml)
 
+![Three Make.com scenarios: Google Forms to Notion, Google Sheets to an AI draft, Google Sheets to a Slack digest](docs/social-card.png)
+
 The open-source Make.com template library: importable scenario blueprints, not 40-step tutorials.
 Each folder is one working automation — download the blueprint, import it, connect your accounts, run it.
-Every template ships with a canvas screenshot, a connection checklist, and its real credit cost per run.
+Every template ships with a canvas screenshot, a connection checklist, and its real cost per run in operations.
 No account needed to browse. No email gate. No paid tier.
 
 Same templates as web pages: [make-templates.aitofy.dev](https://make-templates.aitofy.dev). For agents and LLMs: [llms.txt](./llms.txt), [llms-full.txt](./llms-full.txt).

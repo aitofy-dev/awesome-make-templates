@@ -2,6 +2,8 @@
 
 Someone fills in your Google Form. The answer is saved to a spreadsheet, added to your Notion database, and emailed to you. No code.
 
+![Send Google Forms responses to Notion and email](canvas.png)
+
 ## Before you start
 
 You need three accounts: **Google** (the form and the spreadsheet), **Notion**, and a **Gmail** address to send from. Setup takes about 10 minutes and you never leave the Make screen after importing. Nothing here needs coding — you click, pick, and type.

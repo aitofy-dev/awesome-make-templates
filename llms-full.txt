@@ -13,9 +13,11 @@ FILE: README.md
 
 [![CI](https://github.com/aitofy-dev/awesome-make-templates/actions/workflows/ci.yml/badge.svg)](https://github.com/aitofy-dev/awesome-make-templates/actions/workflows/ci.yml)
 
+![Three Make.com scenarios: Google Forms to Notion, Google Sheets to an AI draft, Google Sheets to a Slack digest](docs/social-card.png)
+
 The open-source Make.com template library: importable scenario blueprints, not 40-step tutorials.
 Each folder is one working automation — download the blueprint, import it, connect your accounts, run it.
-Every template ships with a canvas screenshot, a connection checklist, and its real credit cost per run.
+Every template ships with a canvas screenshot, a connection checklist, and its real cost per run in operations.
 No account needed to browse. No email gate. No paid tier.
 
 Same templates as web pages: [make-templates.aitofy.dev](https://make-templates.aitofy.dev). For agents and LLMs: [llms.txt](./llms.txt), [llms-full.txt](./llms-full.txt).
@@ -103,6 +105,8 @@ FILE: templates/google-forms-to-notion/README.md
 
 Someone fills in your Google Form. The answer is saved to a spreadsheet, added to your Notion database, and emailed to you. No code.
 
+![Send Google Forms responses to Notion and email](canvas.png)
+
 ## Before you start
 
 You need three accounts: **Google** (the form and the spreadsheet), **Notion**, and a **Gmail** address to send from. Setup takes about 10 minutes and you never leave the Make screen after importing. Nothing here needs coding — you click, pick, and type.
@@ -149,6 +153,8 @@ FILE: templates/sheets-openai-draft/README.md
 # Turn new Google Sheets rows into AI-written drafts with OpenAI
 
 You type a product name and a few details into a spreadsheet row. OpenAI writes the product description, and it lands back in the same row a moment later. No code.
+
+![Turn new Google Sheets rows into AI-written drafts with OpenAI](canvas.png)
 
 ## Before you start
 
@@ -204,6 +210,8 @@ FILE: templates/sheets-to-slack-digest/README.md
 # Post new Google Sheets rows to Slack as one digest
 
 Rows land in a spreadsheet. Make collects the new ones, folds them into a single message, and posts that message to a Slack channel. One message per batch, not one per row. No code.
+
+![Post new Google Sheets rows to Slack as one digest](canvas.png)
 
 ## Before you start
 

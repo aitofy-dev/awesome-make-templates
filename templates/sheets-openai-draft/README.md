@@ -2,6 +2,8 @@
 
 You type a product name and a few details into a spreadsheet row. OpenAI writes the product description, and it lands back in the same row a moment later. No code.
 
+![Turn new Google Sheets rows into AI-written drafts with OpenAI](canvas.png)
+
 ## Before you start
 
 You need two accounts: **Google** (the spreadsheet) and **OpenAI** (an API key from platform.openai.com, with a little billing credit on it — the free ChatGPT login is not enough). Setup takes about 10 minutes and you never leave the Make screen after importing. Nothing here needs coding — you click, pick, and type.
