@@ -9,3 +9,5 @@ jobs:
         with: { node-version: 22 }
       - run: node --run test
       - run: node --run build:site
+        env:
+          AFF_CODE: ci-placeholder
